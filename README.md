@@ -1,2 +1,2 @@
 # TakeOutFont
-- 后台地址： git@github.com:TakeOutBg/TakeOutBg.git
+- 后台地址：https://github.com:TakeOutBg/TakeOutBg.git
