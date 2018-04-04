@@ -1,0 +1,43 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/menu/menu",
+    "pages/location/location",
+    "pages/my/my",
+    "pages/order/order",
+    "pages/hongbao/hongbao"
+   
+  ],
+  "window":{
+    "navigationBarTitleText": "红餐桌",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#CC0000"
+  },
+  "tabBar": {
+    "color": "#CC0000",
+    "selectedColor": "#CC0000",
+    "backgroundColor": "#fff",
+    "borderStyle": " black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "pages/images/公司.png",
+        "selectedIconPath": "pages/images/公司.png",
+        "color":"#CC0000",
+        "text": "公司"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "iconPath": "pages/images/订单.png",
+        "selectedIconPath": "pages/images/订单.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "pages/images/会员.png",
+        "selectedIconPath": "pages/images/会员.png",
+        "text": "会员"
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+.mcontainer{
+  height: 100%;
+  width: 100%;
+}
+.image{
+  height: 100%;
+  width: 100%;
+}
+.contant{
+  display: flex;
+}
+.lefter{
+  background-color: gray;
+  height: 100%;
+  width: 30%;
+}
