@@ -1,8 +1,51 @@
-<view class="contant">
-<view class="lefter">
-
+<view class="left-item">
+  <view data-roomName="gu" class="room-item{{room.roomName == 'gu'?' active':''}}" bindtap='changeName'>古田厅</view>
+  <view data-roomName="big" class="room-item{{room.roomName == 'big'?' active':''}}" bindtap='changeName'>大厅</view>
+  <view data-roomName="middle" class="room-item{{room.roomName == 'middle'?' active':''}}" bindtap='changeName'>中厅</view>
+  <view data-roomName="small" class="room-item{{room.roomName == 'small'?' active':''}}" bindtap='changeName'>小厅</view>
 </view>
-<view class="lefter">
-
-</view>
+<view class="right-item">
+  <view>
+  <block wx:for="{{imgUrls}}">
+      <image src="{{item}}" class="slide-image"/>
+  </block>
+  </view>
+  <view class="clear-both label-choose">
+    <text data-roomDate="today" class="label-1__text{{room.roomDate == 'today'?' active':''}}" bindtap='changeDate'>今天</text>
+    <text data-roomDate="tomorrow" class="label-1__text{{room.roomDate == 'tomorrow'?' active':''}}" bindtap='changeDate'>明天</text>
+    <text data-roomDate="dayAto" class="label-1__text{{room.roomDate == 'dayAto'?' active':''}}" bindtap='changeDate'>后天</text>
+    <text data-roomDate="more" class="label-1__text{{room.roomDate == 'more'?' active':''}}" bindtap='changeDate'>更多</text>
+  </view>
+   <view class="clear-both label-choose">
+    <text data-roomTime="11" class="label-1__text{{room.roomTime == '11'?' active':''}}" bindtap='changeTime'>11点</text>
+    <text data-roomTime="12" class="label-1__text{{room.roomTime == '12'?' active':''}}" bindtap='changeTime'>12点</text>
+    <text data-roomTime="13" class="label-1__text{{room.roomTime == '13'?' active':''}}" bindtap='changeTime'>13点</text>
+    <text data-roomTime="17" class="label-1__text{{room.roomTime == '17'?' active':''}}" bindtap='changeTime'>17点</text>
+    <text data-roomTime="18" class="label-1__text{{room.roomTime == '18'?' active':''}}" bindtap='changeTime'>18点</text>
+    <text data-roomTime="19" class="label-1__text{{room.roomTime == '19'?' active':''}}" bindtap='changeTime'>19点</text>
+  </view>
+   <view class="clear-both label-choose">
+      <text data-roomNum="2-4" class="label-1__text{{room.roomNum == '2-4'?' active':''}}" bindtap='changePerson'>2-4人</text>
+      <text data-roomNum="5-8" class="label-1__text{{room.roomNum == '5-8'?' active':''}}" bindtap='changePerson'>5-8人</text>
+      <text data-roomNum="9-11" class="label-1__text{{room.roomNum == '9-11'?' active':''}}" bindtap='changePerson'>9-11人</text>
+      <text data-roomNum="12-15" class="label-1__text{{room.roomNum == '12-15'?' active':''}}" bindtap='changePerson'>12-15人</text>
+  </view>
+  <view class="clear-both user-info">
+    <text class="for-label">姓名: </text>
+    <input class="for-input"  type="text" placeholder="请输入姓名"/>
+  </view>
+  <view class="clear-both user-info">
+    <text class="for-label">电话: </text>
+    <input class="for-input"  type="text" placeholder="请输入电话"/>
+  </view>
+  <view class="clear-both user-info">
+    <text class="for-label">备注: </text>
+    <input class="for-input"  type="text" placeholder="请输入您的要求，我们会尽量安排"/>
+  </view>
+  <view class="clear-both user-info">
+    <text class="for-label for-remark">(如有疑问请致电183xxxxxxxx)</text>
+  </view>
+  <view class="clear-both user-info">
+    <button type="primary" bindtap="roomBooking"> 立即预定 </button>
+  </view>
 </view>

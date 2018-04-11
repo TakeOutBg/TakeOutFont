@@ -1,16 +1,82 @@
-.mcontainer{
-  height: 100%;
+.section{
   width: 100%;
-}
-.image{
   height: 100%;
+}
+.left-item{
+  width: 80px;
+  height: 100%;
+  background: #cfcfcf;
+  float: left;
+}
+.left-item .active{
+  background: #fff
+}
+.right-item{
+  width: calc(100% - 88px);
+  width: -webkit-calc(100% - 88px);
+  width: -moz-calc(100% - 88px);
+  height: 100%;
+  float: left;
+  padding: 0 3px 0 4px;
+}
+
+.room-item{
   width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  color: red;
+  font-weight: bolder;
+  font-size: 16px;
+  font-family: '微软雅黑';
+  border-bottom: 1px solid white;
 }
-.contant{
-  display: flex;
+
+.slide-image{
+  width: 100%;
+  height: 120px;
 }
-.lefter{
-  background-color: gray;
-  height: 100%;
-  width: 30%;
+.clear-both{
+  clear: both
+}
+.label-1__text{
+  display:block;
+  padding:0 5px;
+  color:red;
+  border-radius:5px;
+  margin:5px 7px 5px 2px;
+  border:1px solid red;
+  height:20px;
+  float:left;
+  line-height:20px;
+  font-size:12px;
+  font-weight: bold;
+}
+
+.label-choose .active{
+  background: red;
+  color: #fff;
+}
+
+.for-label{
+  width: 40px;
+  float: left;
+  font-size: 16px;
+  color: red;
+  line-height: 27px;
+}
+.for-input{
+  width: calc(100% - 50px);
+  width: -webkit-calc(100% - 50px);
+  width: -moz-calc(100% - 50px);
+  float: left;
+  margin-left: 5px;
+  border-bottom: 1px solid red;
+  font-size: 14px;
+}
+.user-info{
+  padding:20px 4px;
+}
+.for-remark{
+  width: 100%;
+  text-align: center;
 }

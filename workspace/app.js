@@ -2,6 +2,14 @@
 var app = getApp();
 App({
   onLaunch: function() {
+    var _this = this;
+    wx.getUserInfo({
+      withCredentials: false,
+      success: function (res) {
+        _this.globalData.userInfo = res.userInfo;
+        console.log(res.userInfo);
+      }
+    });
     wx.getLocation({
       type: 'gcj02',
       success: function (res) {
@@ -32,6 +40,7 @@ App({
         withCredentials: false,
         success: function(res) {
           that.globalData.userInfo = res.userInfo
+          console.log(res.userInfo) 
           typeof cb == "function" && cb(that.globalData.userInfo)
         }
       })
@@ -40,6 +49,8 @@ App({
 
   globalData: {
     userInfo: null,
-    location: ""
+    location: "",
+    openId: '',
+    uri: 'http://127.0.0.1:8080/deno-web/'
   }
 })
