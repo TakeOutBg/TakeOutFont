@@ -15,7 +15,9 @@ Page({
       text: "商家",
       id: 3
     }],
+    showCurMenu: false,
     menu:[],
+    curMenu: [],
     currentPage: 0,
     selected: 0,
     howMuch: 12,
@@ -34,7 +36,8 @@ Page({
     this.setData({
       cost: this.data.cost+this.data.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].price,
       menu: info,
-    })
+    });
+    this.getCurMenu();
   },
   removeFromTrolley: function (e) {
     var info = this.data.menu;
@@ -43,8 +46,9 @@ Page({
       this.setData({
         cost: this.data.cost - this.data.menu[this.data.selected].menuContent[e.currentTarget.dataset.index].price,
         menu: info,
-      })
+      });
     }
+    this.getCurMenu();
   },
   turnPage: function (e) {
     this.setData({
@@ -127,6 +131,29 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
+  },
+
+  showMenu: function(e){
+    var showCurMenu = !this.data.showCurMenu;
+    this.setData({
+      showCurMenu: showCurMenu
+    });
+  },
+  getCurMenu: function(){
+    let curMenu = [];
+    for (let i = 0; i < this.data.menu.length; i++) {
+      let menuContent = this.data.menu[i].menuContent;
+      for (let j = 0; j < menuContent.length; j++) {
+        let content = menuContent[j];
+        if (content.numb != 0) {
+          curMenu.push(content);
+        }
+      }
+    }
+
+    this.setData({
+      curMenu: curMenu
+    });
   }
 })

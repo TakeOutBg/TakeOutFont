@@ -51,6 +51,6 @@ App({
     userInfo: null,
     location: "",
     openId: '',
-    uri: 'http://127.0.0.1:8080/deno-web/'
+    uri: 'http://127.0.0.1:8080/demo-web/'
   }
 })

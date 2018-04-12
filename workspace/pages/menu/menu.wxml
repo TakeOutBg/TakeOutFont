@@ -11,7 +11,7 @@
   bindchange="turnTitle">
     <swiper-item id="orderPage">
       <template is="orderPage" data="{{menu,selected,howMuch,cost,pullBar}}"/>
-    </swiper-item>
+  </swiper-item>
     <swiper-item id="commentPage">
       <template is="commentPage" data="{{categoryList}}"/>
     </swiper-item>

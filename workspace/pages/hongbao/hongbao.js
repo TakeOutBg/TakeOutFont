@@ -1,15 +1,22 @@
+var app = getApp();
+var year = new Date().getFullYear();
+var month = new Date().getMonth() + 1;
+var day = new Date().getDate();
+if(month < 10){
+  month = '0' + month;
+}
 var datas ={
   roomName: "gu",
-  roomDate: "today",
-  roomNum: "2-4",
+  roomDate: year + "-" + month +"-" + day,
+  roomNum: "2",
   roomTime: "11",
   userName: "",
   userPhone: "",
   roomRemark: "",
   roomIsNow: "",
-  createTime: ""
+  createTime: undefined
 };
-var app = getApp();
+
 Page({
 
   /**
@@ -20,7 +27,10 @@ Page({
       '/pages/images/hong.jpg'
     ],
     room: datas,
-    userId: ''
+    userId: '',
+    today: year + "-" + month + "-" + day,
+    tomorrow: year + "-" + month + "-" + (day + 1),
+    dayAto: year + "-" + month + "-" + (day + 2)
   },
 
   /**
@@ -81,6 +91,24 @@ Page({
   onShareAppMessage: function () {
 
   },
+  bindUserName: function (e) {
+    var key = "room.userName";
+    this.setData({
+      [key]: e.detail.value
+    });
+  },
+  bindUserPhone: function (e) {
+    var key = "room.userPhone";
+    this.setData({
+      [key]: e.detail.value
+    });
+  },
+  bindRemark: function (e) {
+    var key = "room.roomRemark";
+    this.setData({
+      [key]: e.detail.value
+    });
+  },
   changePerson: function(e){
     var key = "room.roomNum";
     this.setData({
@@ -106,12 +134,12 @@ Page({
     });
   },
   roomBooking: function(e){
+    var mydata = this.data.room;
+    mydata['userID'] = this.data.userId;
     wx.request({
       url: app.globalData.uri +"room/orderRoom.do", //仅为示例，并非真实的接口地址
-      data: {room: this.data.room, userID: this.data.userId},
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
+      data: mydata,
+      method: 'GET',
       success: function (res) {
         console.log(res.data)
       }
