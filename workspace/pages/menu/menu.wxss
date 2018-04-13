@@ -261,12 +261,9 @@
 .foot-curmenu{
   width: 100%;
   min-height: 50px;
-  background: red;
+  background: white;
   position: absolute;
   bottom: 50px;
   left: 0;
-  display: none;
-}
-.foot-curmenu.active{
-  display: block
+  border-top: 1px solid #ccc;
 }

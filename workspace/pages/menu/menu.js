@@ -15,7 +15,7 @@ Page({
       text: "商家",
       id: 3
     }],
-    showCurMenu: false,
+    showview: false,
     menu:[],
     curMenu: [],
     currentPage: 0,
@@ -28,8 +28,7 @@ Page({
     this.setData({
       pullBar: !this.data.pullBar
     })
-  }
-  ,
+  },
   addToTrolley: function (e) {
     var info = this.data.menu;
     info[this.data.selected].menuContent[e.currentTarget.dataset.index].numb++;
@@ -79,7 +78,7 @@ Page({
       type: 'json',
       success: function (res) {
         that.setData({
-          menu: res.data,
+          menu: res.data
         })
       }
     });
@@ -135,10 +134,11 @@ Page({
   },
 
   showMenu: function(e){
-    var showCurMenu = !this.data.showCurMenu;
+    var showview = !this.data.showview;
     this.setData({
-      showCurMenu: showCurMenu
+      showview: showview
     });
+    console.log(this.data.showview);
   },
   getCurMenu: function(){
     let curMenu = [];

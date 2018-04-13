@@ -10,7 +10,7 @@
   <swiper class="swiper" current="{{currentPage}} 
   bindchange="turnTitle">
     <swiper-item id="orderPage">
-      <template is="orderPage" data="{{menu,selected,howMuch,cost,pullBar}}"/>
+      <template is="orderPage" data="{{menu,selected,howMuch,cost,pullBar,showview,curMenu}}"/>
   </swiper-item>
     <swiper-item id="commentPage">
       <template is="commentPage" data="{{categoryList}}"/>
