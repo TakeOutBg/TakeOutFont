@@ -37,8 +37,8 @@
     <view class="footer {{cost!=0?'active':''}}">
       <view wx:if="{{showview}}" class="foot-curmenu">
         <block wx:for="{{curMenu}}" wx:key="item">
-          <view>
-            <view>{{item.name}}</view>
+          <view class="foot-menu-item">
+            <view class="food-menu-itemname">{{item.name}}</view>
             <view class="food-numb">
               <view class="remove" 
               bindtap="removeFromTrolley"

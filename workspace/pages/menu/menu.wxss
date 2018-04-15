@@ -267,3 +267,19 @@
   left: 0;
   border-top: 1px solid #ccc;
 }
+
+.foot-menu-item{
+  height: 40px;
+  border-bottom: 1px solid #ACACAC;
+  padding:10px;
+
+}
+.foot-menu-item > .food-menu-itemname{
+  float: left;
+  margin-left:10px;
+  margin-top:10px
+}
+.foot-menu-item > .food-numb{
+  float: right;
+  margin-top: 10px;
+}
