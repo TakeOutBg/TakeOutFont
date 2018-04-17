@@ -16,9 +16,13 @@
 </view>
 <view class="getLocation"
 bindtap="getLocation">点击定位当前位置</view>
-<view class="addLocation">新增收货地址
+<view class="addLocation" bindtap='addLocation'>新增收货地址
   <view class="addLocation-icon">+</view>
 </view>
-<view class="myLocation">我的收货地址</view>
+<view class="myLocation">
+  <view class="addLocation">福建省福州市福州大学生活3区
+    <view class="addLocation-icon"></view>
+  </view>
+</view>
 <view class="LocatonInfo"></view>
 <view class="userTel"></view>

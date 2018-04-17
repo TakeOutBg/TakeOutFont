@@ -3,6 +3,7 @@
     "pages/home/home",
     "pages/menu/menu",
     "pages/location/location",
+    "pages/location/location_edit",
     "pages/my/my",
     "pages/order/order",
     "pages/hongbao/hongbao"

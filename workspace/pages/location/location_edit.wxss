@@ -1,0 +1,57 @@
+/* pages/location/location_edit.wxss */
+.input-label{
+  width: 100px;
+  text-align: center;
+  float: left;
+  line-height: 30px;
+}
+
+.input-value{
+  width: calc(100% - 100px);
+  width: -webkit-calc(100% - 100px);
+  width: -moz-calc(100% - 100px);
+  float: left;
+  height: 30px;
+}
+
+.input-view{
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  height: 30px;
+}
+
+.input-submit{
+  width: 95%;
+  margin: 10 auto 0;
+}
+
+.input-view-button{
+  margin-top: 10px;
+}
+
+.input-person{
+  height: 80px
+}
+
+.input-person-value{
+  border-bottom:1px solid #ccc;
+  padding:4px;
+}
+
+.input-sex{
+  width:60px;
+  display:inline-block;
+  border:1px solid #ccc;
+  text-align:center;
+  margin:8px 10px 5px 0;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.input-sex.active{
+  color: lightblue;
+}
+
+.radio{
+  margin-right: 10px
+}

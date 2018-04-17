@@ -8,6 +8,11 @@ Page({
     locationList:[],
     hidden: true
   },
+  addLocation: function(){
+    wx.navigateTo({
+      url: './location_edit',
+    })
+  },
   onTap: function (e) {
     wx.setStorageSync('location',e.currentTarget.dataset.key)
     wx.switchTab({
@@ -20,12 +25,14 @@ Page({
       success: function (res) {
         var latitude = res.latitude
         var longitude = res.longitude
+        console.log(res);
         wx.request({
           url: 'https://api.map.baidu.com/geocoder/v2/?ak=btsVVWf0TM1zUBEbzFz6QqWF&coordtype=gcj02ll&location=' + latitude + ',' + longitude + '&output=json&pois=0',
           method: "get",
           success: function (res) {
-            console.log(res.data.result.formatted_address)
-            wx.setStorageSync('location', res.data.result.formatted_address.substr(res.data.result.formatted_address.indexOf('市') + 1, 10))
+            console.log(res)
+            //console.log(res.data.result.formatted_address)
+            //wx.setStorageSync('location', res.data.result.formatted_address.substr(res.data.result.formatted_address.indexOf('市') + 1, 10))
           }
         })
       }
@@ -64,7 +71,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    //this.getLocation();
   },
 
   /**

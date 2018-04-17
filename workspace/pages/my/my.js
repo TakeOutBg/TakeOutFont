@@ -62,6 +62,12 @@ Page({
     })
   },
 
+  getLocation: function(){
+    wx.navigateTo({
+      url: '../location/location',
+    })
+  },
+
   /**
    * 用户点击右上角分享
    */

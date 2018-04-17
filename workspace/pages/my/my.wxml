@@ -5,7 +5,7 @@
   </view>
   <view class="content">
     <view class="coupon" bindtap="toast"> <text class="user-motto">订桌</text></view>
-    <view class="address">我的收货地址</view>
+    <view class="address" bindtap="getLocation">我的收货地址</view>
     <view class="tel">客服电话: 101-097-77</view>
     <view class="signOut">退出账号</view>
   </view>
