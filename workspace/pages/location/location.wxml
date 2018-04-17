@@ -20,9 +20,24 @@ bindtap="getLocation">点击定位当前位置</view>
   <view class="addLocation-icon">+</view>
 </view>
 <view class="myLocation">
-  <view class="addLocation">福建省福州市福州大学生活3区
-    <view class="addLocation-icon"></view>
-  </view>
+  <block wx:for="{{locationList}}" wx:key="item">
+    <view class="location-detail">
+      <view class="location-detail-view">
+        <view class="location-detail-info">
+          <text>{{item.userName}}</text>
+          <text>{{item.userSex == 'w'? '女士': '先生'}}</text>
+          <text>{{item.phone}}</text>
+        </view>
+        <view class="location-detail-address">
+          <text class="is_default" wx:if="{{item.addIsDefault}}">默认</text>
+          {{item.address}}
+        </view>
+      </view>
+      <view data-obj="{{item}}" class="location-detail-edit" bindtap='edit'>
+        <image src='/pages/images/edit.png'></image>
+      </view>
+    </view>
+  </block>
 </view>
 <view class="LocatonInfo"></view>
 <view class="userTel"></view>

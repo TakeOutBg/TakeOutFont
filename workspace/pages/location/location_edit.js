@@ -20,7 +20,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var key = "address.userId";
+    if (!options.addIsDefault){
+      options.addIsDefault = 'false';
+    }
+    this.setData({
+      address: options
+    });
+    let key = "address.userId";
     this.setData({
       [key]: app.globalData.openId
     });
