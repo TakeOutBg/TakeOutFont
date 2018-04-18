@@ -40,6 +40,8 @@ App({
     userInfo: null,
     location: "",
     OPEN_ID: '',
+    curMenu: [],
+    cost: 0,
     isLogin: false,
     APP_ID: 'wx9aacc28ca08872f0',
     APP_SECRET: '7bc128b26612a705deb0beee1804a8a5',
