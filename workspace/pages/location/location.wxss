@@ -49,12 +49,9 @@
   border:2px solid #FFD671;
 }
 .myLocation{
-  background: #F4F4F4;
-  height: 100rpx;
+  height: 60rpx;
   padding-left: 15rpx;
-  line-height: 130rpx;
   font-size: 25rpx;
-  color: #E3E3E3;
 }
 .result-container{
   position: fixed;
@@ -79,4 +76,61 @@
   line-height: 45rpx;
   font-size: 27rpx;
   color: #AAAAAA;
+}
+.location-detail{
+  height: 60px;
+  border-top: 1px solid #ccc; 
+}
+.location-detail:last-child{
+  border-bottom: 1px solid #ccc; 
+}
+.location-detail-info,.location-detail-address{
+  height: 30px;
+  line-height: 30px;
+}
+.location-detail-view{
+  height: 60px;
+  width: calc(100% - 100px);
+  width: -moz-calc(100% - 100px);
+  width: -webkit-calc(100% - 100px);
+  float: left;
+}
+
+.location-detail text{
+  display: inline-block;
+  margin-right: 20px;
+  font-size: 14px;
+}
+.location-detail text:first-child{
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+}
+.location-detail-address{
+  font-size: 12px;
+  color: #ccc;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden
+}
+
+.location-detail-edit{
+  width: 100px;
+  float: left;
+  height: 60px;
+  text-align: center;
+}
+.location-detail-edit image{
+  width: 36px;
+  height: 36px;
+  margin-top: 12px; 
+}
+.is_default{
+  background: #5cb85c !important;
+  color: white !important;
+  margin-right: 0 !important;
+  font-size: 12px !important;
+  padding:0 10px;
+  line-height:20px; 
+  border-radius:5px;
 }

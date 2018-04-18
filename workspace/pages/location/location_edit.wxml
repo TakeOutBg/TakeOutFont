@@ -2,7 +2,7 @@
   <view class="input-view input-person">
     <view class="input-label">联系人</view>
     <view class="input-value">
-      <input type="text" class="input-person-value" bindinput='bindUserName' placeholder='请输入联系人'></input>
+      <input type="text" class="input-person-value" value="{{address.userName}}" bindinput='bindUserName' placeholder='请输入联系人'></input>
       <text data-sex='m' class="input-sex{{address.userSex == 'm'?' active' : ''}}" bindtap='changeSex'>先生</text>
       <text data-sex='w' class="input-sex{{address.userSex == 'w'?' active' : ''}}" bindtap='changeSex'>女士</text>
     </view>
@@ -10,22 +10,30 @@
   </view>
   <view class="input-view">
     <text class="input-label">收货地址</text>
-    <input type="text" class="input-value" bindinput='bindAddress' placeholder='请输入收货地址'></input>
+    <input type="text" value="{{address.address}}" bindinput='bindAddress' placeholder='请输入收货地址'></input>
   </view>
   <view class="input-view">
     <text class="input-label">电话</text>
-    <input type="number" class="input-value" bindinput='bindPhone' placeholder='请输入联系电话'></input>
+    <input type="number" value="{{address.phone}}" class="input-value" bindinput='bindPhone' placeholder='请输入联系电话'></input>
   </view>
   <view class="input-view">
     <text class="input-label">是否默认</text>
     <radio-group class="radio-group" bindchange="radioChange">
       <label class="radio">
-        <radio value="1" checked="true"/>是
+        <radio value="true" checked="{{address.addIsDefault == 'true'}}"/>是
       </label>
       <label class="radio">
-        <radio value="0" checked="true"/>否
+        <radio value="false" checked="{{address.addIsDefault == 'false'}}"/>否
       </label>
     </radio-group>
+    <!-- <radio-group class="radio-group {{!address.addIsDefault}}" bindchange="radioChange" wx:if="{{address.addIsDefault == 'false'}}">
+      <label class="radio">
+        <radio value="true"/>是
+      </label>
+      <label class="radio">
+        <radio value="false" checked="true"/>否
+      </label>
+    </radio-group> -->
   </view>
   <view class="input-view-button">
     <button type="primary" bindtap="submit" class="input-submit"> 确定 </button>

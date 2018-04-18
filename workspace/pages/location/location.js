@@ -5,7 +5,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    locationList:[],
+    locationList:[{
+      id: '1',
+      address: '福建省福州市大学城福州大学生活三区',
+      phone: '18649717160',
+      userId: '',
+      userName: '柯晓鸿',
+      userSex: 'm',
+      addIsDefault: false
+    },{
+        id: '2',
+        address: '福建省福州市大学城福州大学生活三区',
+        phone: '18649717160',
+        userId: '',
+        userName: '柯晓鸿',
+        userSex: 'w',
+        addIsDefault: true
+    }],
     hidden: true
   },
   addLocation: function(){
@@ -67,6 +83,19 @@ Page({
     })
   },
 
+  edit: function(e){
+    let location = e.currentTarget.dataset.obj;
+    wx.navigateTo({
+      url: './location_edit?' + this.getData(location),
+    })
+  },
+  getData: function(value){
+    let val = "";
+    for(let attr in value){
+      val += (attr + "=" + value[attr] + "&")
+    }
+    return val.substr(0,val.length);
+  },
   /**
    * 生命周期函数--监听页面加载
    */
