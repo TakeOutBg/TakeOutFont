@@ -1,4 +1,5 @@
 // pages/menu/menu.js
+let app = getApp();
 Page({
 
   /**
@@ -139,6 +140,17 @@ Page({
       showview: showview
     });
     console.log(this.data.showview);
+  },
+  paycost: function(e){
+    if(this.data.cost == 0){
+      return ;
+    }
+    this.getCurMenu()
+    app.globalData.curMenu = this.data.curMenu;
+    app.globalData.cost = this.data.cost;
+    wx.navigateTo({
+      url: '../pay/pay',
+    })
   },
   getCurMenu: function(){
     let curMenu = [];

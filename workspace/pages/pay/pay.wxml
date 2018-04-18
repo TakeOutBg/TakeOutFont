@@ -1,0 +1,19 @@
+<view>
+  <view>
+    location
+  </view>
+  <block wx:for="{{menu}}" wx:key="item">
+    <view>
+      <text>{{item.name}}</text>
+      <text>x{{item.num}}</text>
+      <text>￥{{item.price}}</text>
+    </view>
+  </block>
+  <view>
+    <text>配送费</text>
+    <text>￥7</text>
+  </view>
+  <view>
+    <text>实付 ￥{{cost}}</text>
+  </view>
+</view>

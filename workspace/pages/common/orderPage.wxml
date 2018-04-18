@@ -60,7 +60,7 @@
           <view class="cost" hidden="{{cost==0}}">￥{{cost}}</view>
           <view class="free">免配送费</view>
         </view>
-        <view class="pay">{{cost!=0?'去结算':'15元起送'}}</view>
+        <view class="pay" bindtap='paycost'>{{cost!=0?'去结算':'15元起送'}}</view>
       </view>
     </view>
 </template>
