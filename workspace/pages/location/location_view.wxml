@@ -21,7 +21,7 @@ bindtap="getLocation">点击定位当前位置</view>
 </view>
 <view class="myLocation">
   <block wx:for="{{locationList}}" wx:key="item">
-    <view class="location-detail">
+    <view class="location-detail" data-location="{{item}}" bindtap='chooseLocation'>
       <view class="location-detail-view">
         <view class="location-detail-info">
           <text>{{item.userName}}</text>

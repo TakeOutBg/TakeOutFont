@@ -9,7 +9,6 @@ App({
         _this.globalData.isLogin = true;
         wx.login({
           success: function (res) {
-            console.log(res);
             if (res) {
               wx.request({
                 url: 'https://api.weixin.qq.com/sns/jscode2session',

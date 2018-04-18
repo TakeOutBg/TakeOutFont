@@ -1,19 +1,39 @@
 <view>
-  <view>
-    location
+  <view class="myLocation">
+    <block wx:for="{{locationList}}" wx:key="item">
+      <view class="location-detail" bindtap='chooseAddress'>
+        <view class="location-detail-view">
+          <view class="location-detail-info">
+            <text>{{item.userName}}</text>
+            <text>{{item.userSex == 'w'? '女士': '先生'}}</text>
+            <text>{{item.phone}}</text>
+          </view>
+          <view class="location-detail-address">
+            <text class="is_default" wx:if="{{item.addIsDefault == 'true'}}">默认</text>
+            {{item.address}}
+          </view>
+        </view>
+        <view data-obj="{{item}}" class="location-detail-edit" bindtap='edit'>
+          <image src='/pages/images/edit.png'></image>
+        </view>
+      </view>
+    </block>
   </view>
   <block wx:for="{{menu}}" wx:key="item">
-    <view>
-      <text>{{item.name}}</text>
-      <text>x{{item.num}}</text>
-      <text>￥{{item.price}}</text>
+    <view class="menu-item">
+      <text class="menu-item-dtl menu-itemm-name">{{item.name}}</text>
+      <text class="menu-item-dtl menu-item-num">x{{item.numb}}</text>
+      <text class="menu-item-dtl menu-item-price">￥{{item.price}}</text>
     </view>
   </block>
-  <view>
-    <text>配送费</text>
-    <text>￥7</text>
+  <view class="menu-item">
+    <text class="menu-item-dtl menu-item-take-label">配送费</text>
+    <text class="menu-item-dtl menu-item-take-price">￥{{takePrice}}</text>
   </view>
-  <view>
-    <text>实付 ￥{{cost}}</text>
+  <view class='menu-item-dtl menu-item'>
+    <text class="menu-item-dtl menu-cost">实付: ￥{{cost + takePrice}}</text>
+  </view>
+  <view class="input-view-button">
+    <button type="primary" bindtap="submit" class="input-submit"> 确定 </button>
   </view>
 </view>

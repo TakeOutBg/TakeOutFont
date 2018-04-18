@@ -6,8 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    locationList: [],
     menu: [],
-    cost: 0
+    cost: 0,
+    takePrice: 7
   },
 
   /**
@@ -18,6 +20,18 @@ Page({
       menu: app.globalData.curMenu,
       cost: app.globalData.cost
     });
+    let userId = app.globalData.OPEN_ID;
+    let uri = app.globalData.uri;
+    let _this = this;
+    wx.request({
+      url: uri + 'address/getLists.do',
+      data: { userid: userId, addIsDefault: 'true' },
+      success: function (res) {
+        _this.setData({
+          locationList: res.data
+        })
+      }
+    })
   },
 
   /**
@@ -67,5 +81,13 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  submit: function(){
+
+  },
+  chooseAddress: function(){
+    wx.navigateTo({
+      url: '../location/location_view',
+    })
   }
 })

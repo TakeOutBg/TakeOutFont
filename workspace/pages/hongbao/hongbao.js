@@ -39,7 +39,7 @@ Page({
   onLoad: function (options) {
     console.log("load")
     this.setData({
-      userId: app.globalData.userInfo.nickName
+      userId: app.globalData.OPEN_ID
     });
   },
 

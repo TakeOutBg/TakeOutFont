@@ -1,1 +1,124 @@
 /* pages/pay/pay.wxss */
+.myLocation{
+  padding-left: 15rpx;
+  font-size: 25rpx;
+}
+
+.location-detail{
+  height: 80px;
+  border-top: 1px solid #ccc; 
+}
+.location-detail:last-child{
+  border-bottom: 1px solid #ccc; 
+}
+.location-detail-info,.location-detail-address{
+  height: 40px;
+  line-height: 30px;
+}
+.location-detail-view{
+  height: 80px;
+  width: calc(100% - 100px);
+  width: -moz-calc(100% - 100px);
+  width: -webkit-calc(100% - 100px);
+  float: left;
+}
+
+.location-detail text{
+  display: inline-block;
+  margin-right: 20px;
+  font-size: 16px;
+}
+.location-detail text:first-child{
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+}
+.location-detail-address{
+  font-size: 14px;
+  color: #0c0c0c;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden
+}
+
+.location-detail-edit{
+  width: 100px;
+  float: left;
+  height: 80px;
+  text-align: center;
+}
+.location-detail-edit image{
+  width: 36px;
+  height: 36px;
+  margin-top: 12px; 
+}
+.is_default{
+  background: #5cb85c !important;
+  color: white !important;
+  margin-right: 0 !important;
+  font-size: 12px !important;
+  padding:0 10px;
+  line-height:20px; 
+  border-radius:5px;
+}
+
+.menu-item{
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
+.menu-item:first-child{
+  border-top: 1px solid #ccc;
+}
+
+.menu-item-dtl{
+  display: inline-block;
+  padding: 5px 8px
+}
+
+.menu-itemm-name{
+  width: calc(60% - 20px);
+  width: -moz-calc(60% - 20px);
+  width: -webkit-calc(60% - 20px);
+  text-align: left
+}
+
+.menu-item-num{
+  width: calc(20% - 20px);
+  width: -moz-calc(20% - 20px);
+  width: -webkit-calc(20% - 20px);
+  text-align: center;
+}
+
+.menu-item-price{
+  width: calc(20% - 20px);
+  width: -moz-calc(20% - 20px);
+  width: -webkit-calc(20% - 20px);
+  text-align: right;
+}
+
+.menu-item-take-label,.menu-item-take-price{
+  width: calc(50% - 20px);
+  width: -moz-calc(50% - 20px);
+  width: -webkit-calc(50% - 20px);
+}
+
+.menu-item-take-label{
+  text-align: left;
+}
+
+.menu-item-take-price{
+  width: calc(50% - 20px);
+  width: -moz-calc(50% - 20px);
+  width: -webkit-calc(50% - 20px);
+  text-align: right
+}
+
+.menu-cost{
+  width: calc(100% - 40px);
+  width: -moz-calc(100% - 40px);
+  width: -webkit-calc(100% - 40px);
+  text-align: right;
+  color: red;
+}

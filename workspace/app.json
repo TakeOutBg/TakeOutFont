@@ -4,6 +4,7 @@
     "pages/menu/menu",
     "pages/location/location",
     "pages/location/location_edit",
+    "pages/location/location_view",
     "pages/my/my",
     "pages/order/order",
     "pages/hongbao/hongbao",

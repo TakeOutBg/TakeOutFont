@@ -7,13 +7,15 @@ Page({
    */
   data: {
     address: {
+      id: undefined,
       address: undefined,
       phone: undefined,
-      userId: undefined,
+      userid: undefined,
       userName: undefined,
       userSex: 'm',
       addIsDefault: undefined
-    }
+    },
+    method: "add"
   },
 
   /**
@@ -23,13 +25,19 @@ Page({
     if (!options.addIsDefault){
       options.addIsDefault = 'false';
     }
+    if(options.id){
+      this.setData({
+        method: 'edit'
+      })
+    }
     this.setData({
       address: options
     });
-    let key = "address.userId";
+    let key = "address.userid";
     this.setData({
-      [key]: app.globalData.openId
+      [key]: app.globalData.OPEN_ID
     });
+    console.log(this.data.address)
   },
 
   /**
@@ -80,6 +88,12 @@ Page({
   onShareAppMessage: function () {
   
   },
+  bindUserName: function(e){
+    let key = "address.userName";
+    this.setData({
+      [key]: e.detail.value
+    });
+  },
   bindAddress: function(e){
     let key = "address.address";
     this.setData({
@@ -87,7 +101,7 @@ Page({
     });
   },
   bindPhone: function (e) {
-    let key = "address.address";
+    let key = "address.phone";
     this.setData({
       [key]: e.detail.value
     });
@@ -105,19 +119,20 @@ Page({
     });
   },
   submit: function(){
-    var mydata = this.data.address;
-    mydata['userId'] = this.data.userId;
-    // wx.request({
-    //   url: app.globalData.uri + "address/insetSelective.do", //仅为示例，并非真实的接口地址
-    //   data: mydata,
-    //   method: 'GET',
-    //   success: function (res) {
-    //     console.log(res.data)
-    //   }
-    // });
-
-    wx.navigateBack({
-      delta: 1
-    })
+    let url = "insertSelective.do";
+    if(this.data.method == 'edit'){
+      url = 'update.do';
+    }
+    let mydata = this.data.address;
+    wx.request({
+      url: app.globalData.uri + "address/" + url, //仅为示例，并非真实的接口地址
+      data: mydata,
+      method: 'POST',
+      success: function (res) {
+        wx.navigateBack({
+          delta: 1
+        })
+      }
+    });
   }
 })
