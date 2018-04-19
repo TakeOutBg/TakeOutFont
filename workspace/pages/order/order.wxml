@@ -1,13 +1,15 @@
 <scroll-view class="container"
 scroll-y="true">
-  <block wx:for="{{orderList}}" wx:key="">
+  <block wx:for="{{orderList}}" wx:key="item">
     <view class="orderList">
       <view class="order-title">
         <view class="order-title-restaurantName">
           红餐桌</view>
-        <view class="order-title-state">{{item.state}}</view>
+        <view wx:if="{{item.state == '00'}}" class="order-title-state order-title-state-success">订单已取消</view>
+        <view wx:if="{{item.state == '20'}}" bindtap='changeStatus'  data-id="{{item.id}}" class="order-title-state">订单取消</view>
+        <view wx:if="{{item.state == '30'}}" class="order-title-state order-title-state-success">订单完成</view>
       </view>
-      <view class="order-content">
+      <view class="order-content" bindtap='detail' data-id="{{item.id}}">
         <image class="order-content-restaurantImg"
          src="http://i4.piimg.com/601998/9ce47f2f19d7717d.jpg"></image>
         <view class="order-content-info">
@@ -19,7 +21,7 @@ scroll-y="true">
         </view>
       </view>
       <view class="order-footer">
-        <view class="order-footer-orderAgain" bindtap='addMore'>再来一单</view>
+        <view class="order-footer-orderAgain" data-id='{{item.id}}' bindtap='addMore'>再来一单</view>
         <view class="order-footer-goToComment">去评论</view>
       </view>
     </view>

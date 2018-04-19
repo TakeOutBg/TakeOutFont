@@ -23,10 +23,12 @@
   font-size: 30rpx;
 }
 .order-title-state{
-  width: 130rpx;
+  width: 150rpx;
   color: #D2D2D2;
   margin-right: 20rpx;
   font-size: 28rpx;
+  text-align:right;
+  padding-right:20px;
 }
 .order-content{
   height: 250rpx;
@@ -75,4 +77,7 @@
 }
 .order-footer-goToComment{
   background: #FFD161;
+}
+.order-title-state-success{
+  color: red
 }

@@ -1,7 +1,7 @@
 <view>
   <view class="myLocation">
     <block wx:for="{{locationList}}" wx:key="item">
-      <view class="location-detail" bindtap='chooseAddress'>
+      <view class="location-detail">
         <view class="location-detail-view">
           <view class="location-detail-info">
             <text>{{item.userName}}</text>
@@ -12,9 +12,6 @@
             <text class="is_default" wx:if="{{item.addIsDefault == 'true'}}">默认</text>
             {{item.address}}
           </view>
-        </view>
-        <view data-obj="{{item}}" class="location-detail-edit" bindtap='edit'>
-          <image src='/pages/images/edit.png'></image>
         </view>
       </view>
     </block>
@@ -35,14 +32,16 @@
   </view>
   <view class='menu-item-dtl menu-item'>
     <text class="menu-item-dtl menu-item-take-label">送出时间</text>
-    <picker class="menu-item-dtl menu-item-take-price" mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
-      <text>{{appointmentTime}}</text>
-    </picker>
-  </view>
-  <view class='menu-item-dtl menu-item menu-remark'>
-      <textarea placeholder='请输入要求' bindinput='bindRemark'>{{remark}}</textarea>
-  </view>
-  <view class="input-view-button">
-    <button type="primary" bindtap="submit" class="input-submit"> 确定 </button>
-  </view>
+      <text class="menu-item-dtl menu-item-take-price">{{appointmentTime}}</text>
+    </view>
+    <view class='menu-item-dtl menu-item menu-remark'>
+      <text class="menu-item-dtl menu-item-take-label">备注</text>
+      <text class="menu-item-dtl menu-item-take-price">{{remark}}</text>
+    </view>
+    <!-- <view class="input-view-button">
+      <button type="primary" bindtap="submit" class="input-submit"> 查看订单 </button>
+    </view>
+    <view class="input-view-button">
+      <button type="primary" bindtap="returnHome" class="input-submit"> 返回首页 </button>
+    </view> -->
 </view>

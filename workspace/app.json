@@ -8,7 +8,9 @@
     "pages/my/my",
     "pages/order/order",
     "pages/hongbao/hongbao",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/pay/pay_success",
+    "pages/pay/pay_more"
    
   ],
   "window":{

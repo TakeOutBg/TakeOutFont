@@ -126,3 +126,6 @@
 .menu-remark{
   height: auto
 }
+.input-submit{
+  margin-top: 10px;
+}
