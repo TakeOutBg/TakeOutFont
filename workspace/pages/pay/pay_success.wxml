@@ -38,10 +38,10 @@
       <text class="menu-item-dtl menu-item-take-label">备注</text>
       <text class="menu-item-dtl menu-item-take-price">{{remark}}</text>
     </view>
-    <!-- <view class="input-view-button">
+    <view class="input-view-button">
       <button type="primary" bindtap="submit" class="input-submit"> 查看订单 </button>
     </view>
     <view class="input-view-button">
       <button type="primary" bindtap="returnHome" class="input-submit"> 返回首页 </button>
-    </view> -->
+    </view>
 </view>

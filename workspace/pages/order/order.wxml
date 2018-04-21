@@ -26,4 +26,37 @@ scroll-y="true">
       </view>
     </view>
   </block> 
+
+  <block wx:for="{{roomList}}" wx:key="item">
+    <view class="orderList">
+      <view class="order-title">
+        <view class="order-title-restaurantName">
+          <text wx:if="{{item.roomName == 'gu'}}">古田厅</text>
+          <text wx:if="{{item.roomName == 'big'}}">大厅</text>
+          <text wx:if="{{item.roomName == 'middle'}}">中厅</text>
+          <text wx:if="{{item.roomName == 'small'}}">小厅</text>
+        </view>
+        <view wx:if="{{item.roomIsNow == 'no'}}" class="order-title-state order-title-state-success">订单已取消</view>
+        <view wx:if="{{item.roomIsNow == 'yes'}}" bindtap='changeRoomStatus'  data-id="{{item.id}}" class="order-title-state">订单取消</view>
+        <view wx:if="{{item.roomIsNow == 'success'}}" class="order-title-state order-title-state-success">订单完成</view>
+      </view>
+      <view class="order-content" bindtap='roomDetail' data-id="{{item.id}}">
+        <image class="order-content-restaurantImg"
+         src="http://i4.piimg.com/601998/9ce47f2f19d7717d.jpg"></image>
+        <view class="order-content-info">
+          <view class="order-content-info-price">
+            {{item.userName}}  {{item.userPhone}}
+          </view>
+          <view class="order-content-info-date">
+          {{item.roomDate}} {{item.roomTime}} 点</view>
+          <view class="order-content-info-howToDistribute">
+          由 红餐桌 提供服务</view>
+        </view>
+      </view>
+      <view class="order-footer">
+        <view class="order-footer-orderAgain" data-id='{{item.id}}' bindtap='addRoomMore'>再来一单</view>
+        <view class="order-footer-goToComment">去评论</view>
+      </view>
+    </view>
+  </block> 
 </scroll-view>

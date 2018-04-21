@@ -18,6 +18,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showToast({
+      title: '支付成功',
+      icon: 'success',
+      duration: 2000
+    })
     let userId = app.globalData.OPEN_ID;
     let uri = app.globalData.uri;
     let _this = this;
@@ -105,14 +110,13 @@ Page({
     })
   },
   submit: function () {
-    console.log('aa');
-    wx.redirectTo({
-      url: '../order/order',
+    wx.switchTab({
+      url: '/pages/order/order'
     })
   },
   returnHome: function(){
-    wx.redirectTo({
-      url: '../home/home',
+    wx.switchTab({
+      url: '/pages/home/home'
     })
   },
   bindRemark: function (e) {

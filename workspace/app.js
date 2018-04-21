@@ -21,6 +21,7 @@ App({
                 success: function (response) {
                   if (response.statusCode == 200) {
                     _this.globalData.OPEN_ID = response.data.openid;
+                    _this.updateUser();
                   }
                 }
               })
@@ -34,13 +35,38 @@ App({
       }
     });
   },
+  updateUser: function(){
+    let _this = this;
+    let user = {
+      id: this.globalData.OPEN_ID,
+      userName: this.globalData.userInfo.nickName
+    };
+    wx.request({
+      url: _this.globalData.uri + 'user/loginOrRegister.do',
+      method: 'POST',
+      data: user,
+      success: res => {
+        console.log(res);
+        if(res.data.status == '500'){
+          wx.showToast({
+            title: '登录失败',
+            icon: 'fail',
+            duration: 2000
+          })
+        }else{
+          _this.globalData.user = res.data.object
 
+        }
+      }
+    })
+  },
   globalData: {
     userInfo: null,
     location: "",
     OPEN_ID: '',
     curMenu: [],
     cost: 0,
+    user: null,
     isLogin: false,
     APP_ID: 'wx9aacc28ca08872f0',
     APP_SECRET: 'c99fa948c489fc34ce21e258e455d66a',

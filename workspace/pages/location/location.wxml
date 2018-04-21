@@ -14,8 +14,8 @@
   </block>
 </scroll-view>
 </view>
-<view class="getLocation"
-bindtap="getLocation">点击定位当前位置</view>
+<!-- <view class="getLocation"
+bindtap="getLocation">点击定位当前位置</view> -->
 <view class="addLocation" bindtap='addLocation'>新增收货地址
   <view class="addLocation-icon">+</view>
 </view>

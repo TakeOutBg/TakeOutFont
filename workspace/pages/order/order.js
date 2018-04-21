@@ -7,15 +7,8 @@ Page({
    */
   data: {
     takePrice: 7,
-    orderList:[{
-      id: undefined,
-      restaurantName: "传世排骨汤饭",
-      state: "订单取消",
-      price: "12",
-      date: "2017-07-14",
-      time: "12:29:12",
-      howToDistribute: "商家"
-    }]
+    orderList:[],
+    roomList: []
   },
 
   /**
@@ -24,17 +17,20 @@ Page({
   onLoad: function (options) {
     
   },
-  formatTime: function (date) {
+  
+  formatTime: function (date,types) {
     var year = date.getFullYear()
     var month = date.getMonth() + 1
     var day = date.getDate()
 
-    var hour = date.getHours()
-    var minute = date.getMinutes()
-    var second = date.getSeconds()
-
-
-    return [year, month, day].map(this.formatNumber).join('-') + ' ' + [hour, minute, second].map(this.formatNumber).join(':')
+    if(types == 1){
+      var hour = date.getHours()
+      var minute = date.getMinutes()
+      var second = date.getSeconds()
+      return [year, month, day].map(this.formatNumber).join('-') + ' ' + [hour, minute, second].map(this.formatNumber).join(':')
+    }else{
+      return [year, month, day].map(this.formatNumber).join('-');
+    }
   },
   formatNumber: function (n) {
     n = n.toString()
@@ -48,8 +44,34 @@ Page({
       url: app.globalData.uri + 'order/updateSelective.do',
       data: {id: id, docStatus: '00'},
       method: 'POST',
-      success: function (res) {
-        _this.onLoad();
+      success: res => {
+        wx.showToast({
+          title: res.data.message,
+          icon: 'success',
+          duration: 2000
+        });
+        setTimeout(() => {
+          _this.init();
+        },2000)
+      }
+    })
+  },
+  changeRoomStatus: function(e){
+    let _this = this;
+    let id = e.currentTarget.dataset.id;
+    let userid = app.globalData.OPEN_ID;
+    wx.request({
+      url: app.globalData.uri + 'room/cancleRoom.do?roomID=' + id + '&userID=' + userid,
+      method: 'GET',
+      success: res => {
+        wx.showToast({
+          title: res.data.message,
+          icon: 'success',
+          duration: 2000
+        });
+        setTimeout(() => {
+          _this.init();
+        }, 2000)
       }
     })
   },
@@ -58,9 +80,19 @@ Page({
       url: '../pay/pay_success?id=' + e.currentTarget.dataset.id,
     })
   },
+  roomDetail: e => {
+    wx.navigateTo({
+      url: '../hongbao/hongbao?id=' + e.currentTarget.dataset.id,
+    })
+  },
   addMore: function(e){
     wx.navigateTo({
       url: '../pay/pay_more?id=' + e.currentTarget.dataset.id,
+    })
+  },
+  addRoomMore: e => {
+    wx.navigateTo({
+      url: '../hongbao/hongbao?id=' + e.currentTarget.dataset.id,
     })
   },
   /**
@@ -74,9 +106,23 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.init()
+  },
+  init: function(){
     let userid = app.globalData.OPEN_ID;
     let uri = app.globalData.uri;
     let _this = this;
+    wx.request({
+      url: uri + 'room/getRoomByUserID.do?userID=' + userid,
+      success: res => {
+        let data = res.data.result;
+
+        _this.setData({
+          roomList: res.data.result
+        })
+      }
+    })
+
     wx.request({
       url: uri + 'order/getOrdersByUserID.do?userID=' + userid,
       success: function (res) {
@@ -89,7 +135,7 @@ Page({
             restaurantName: "红餐桌",
             state: orders[attr].docStatus,
             price: orders[attr].money,
-            date: _this.formatTime(new Date(orders[attr].createTime)),
+            date: _this.formatTime(new Date(orders[attr].createTime), 1),
             howToDistribute: "商家"
           };
           orderList.push(order);
@@ -100,7 +146,6 @@ Page({
       }
     })
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */

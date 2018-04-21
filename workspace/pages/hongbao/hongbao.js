@@ -28,6 +28,8 @@ Page({
     ],
     room: datas,
     userId: '',
+    more: '更多',
+    hasMore: false,
     today: year + "-" + month + "-" + day,
     tomorrow: year + "-" + month + "-" + (day + 1),
     dayAto: year + "-" + month + "-" + (day + 2)
@@ -37,12 +39,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(null != options["id"] && undefined != options["id"] && "" != options["id"]){
+      let id = options["id"];
+      let _this = this;
+      wx.request({
+        url: app.globalData.uri + 'room/getRoom.do',
+        data: {id: id},
+        method: 'GET',
+        success: res => {
+         if(null != res.data.object){
+          let date = res.data.object.roomDate;
+
+          if (date != _this.data.today && date != _this.data.tomorrow && date != _this.data.dayAto) {
+            _this.setData({
+              more: date,
+              hasMore: true
+            });
+          }
+          res.data.object.id = undefined;
+          delete res.data.object.createTime;
+          _this.setData({
+            room: res.data.object
+          });
+          
+         }
+        }
+      });
+    }
     console.log("load")
     this.setData({
       userId: app.globalData.OPEN_ID
     });
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -118,7 +146,18 @@ Page({
   changeDate: function (e) {
     var key = "room.roomDate";
     this.setData({
-      [key]: e.target.dataset.roomdate
+      [key]: e.target.dataset.roomdate,
+      hasMore: false
+    });
+  },
+  bindTimeChange: function (e) {
+    this.setData({
+      more: e.detail.value
+    })
+    var key = "room.roomDate";
+    this.setData({
+      [key]: e.detail.value,
+      hasMore: true
     });
   },
   changeTime: function (e) {
@@ -141,7 +180,18 @@ Page({
       data: mydata,
       method: 'GET',
       success: function (res) {
-        console.log(res.data)
+        wx.showToast({
+          title: res.data.message,
+          icon: 'success',
+          duration: 2000
+        });
+        if(res.data.status == '202'){
+          setTimeout(function(){
+            wx.switchTab({
+              url: '/pages/order/order'
+            });
+          },2000)
+        }
       }
     })
   }

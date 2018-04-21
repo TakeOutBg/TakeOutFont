@@ -27,19 +27,23 @@ Page({
         var latitude = res.latitude
         var longitude = res.longitude
         console.log(res);
-        wx.request({
-          url: 'https://api.map.baidu.com/geocoder/v2/?ak=btsVVWf0TM1zUBEbzFz6QqWF&coordtype=gcj02ll&location=' + latitude + ',' + longitude + '&output=json&pois=0',
-          method: "get",
-          success: function (res) {
+        // wx.request({
+        //   url: 'https://api.map.baidu.com/geocoder/v2/?ak=btsVVWf0TM1zUBEbzFz6QqWF&coordtype=gcj02ll&location=' + latitude + ',' + longitude + '&output=json&pois=0',
+        //   method: "get",
+        //   success: function (res) {
+        //     console.log(res)
+        //     //console.log(res.data.result.formatted_address)
+        //     //wx.setStorageSync('location', res.data.result.formatted_address.substr(res.data.result.formatted_address.indexOf('市') + 1, 10))
+        //   }
+        // })
+        wx.chooseLocation({
+          latitude: latitude,
+          longitude: longitude,
+          success: res => {
             console.log(res)
-            //console.log(res.data.result.formatted_address)
-            //wx.setStorageSync('location', res.data.result.formatted_address.substr(res.data.result.formatted_address.indexOf('市') + 1, 10))
           }
         })
       }
-    })
-    wx.switchTab({
-      url: '/pages/home/home'
     })
   },
   input: function (e){
@@ -56,16 +60,20 @@ Page({
   },
   search: function (text){
     var that = this;
+    let userId = app.globalData.OPEN_ID;
+    let uri = app.globalData.uri;
+    let _this = this;
     wx.request({
-      url: 'https://api.map.baidu.com/place/v2/search?query=' + text +'&page_size=20&page_num=0&scope=2&region=泉州&output=json&ak=btsVVWf0TM1zUBEbzFz6QqWF',
-      type: 'json',
-      success: function(res){
-        console.log(res);
-        that.setData({
-          locationList:res.data.results
-        })
+      url: uri + 'address/searchAddressByUserID.do',
+      data: { userID: userId,address: text },
+      success: function (res) {
+        if (res.data.status == "202") {
+          _this.setData({
+            locationList: res.data.result
+          })
+        }
       }
-    })
+    });
   },
 
   edit: function(e){

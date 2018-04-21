@@ -14,7 +14,9 @@
     <text data-roomDate="{{today}}" class="label-1__text{{room.roomDate == today?' active':''}}" bindtap='changeDate'>今天</text>
     <text data-roomDate="{{tomorrow}}" class="label-1__text{{room.roomDate == tomorrow?' active':''}}" bindtap='changeDate'>明天</text>
     <text data-roomDate="{{dayAto}}" class="label-1__text{{room.roomDate == dayAto?' active':''}}" bindtap='changeDate'>后天</text>
-    <text data-roomDate="more" class="label-1__text{{room.roomDate == 'more'?' active':''}}" bindtap='changeDate'>更多</text>
+    <picker class="label-1__text{{hasMore?' active':''}}" mode="date" value="{{date}}" start="{{today}}" end="999-12-31" bindchange="bindTimeChange">
+      <text>{{more}}</text>
+    </picker>
   </view>
    <view class="clear-both label-choose">
     <text data-roomTime="11" class="label-1__text{{room.roomTime == '11'?' active':''}}" bindtap='changeTime'>11点</text>
@@ -32,15 +34,15 @@
   </view>
   <view class="clear-both user-info">
     <text class="for-label">姓名: </text>
-    <input class="for-input" bindinput="bindUserName"  type="text" placeholder="请输入姓名"/>
+    <input class="for-input" bindinput="bindUserName" value="{{room.userName}}" type="text" placeholder="请输入姓名"/>
   </view>
   <view class="clear-both user-info">
     <text class="for-label">电话: </text>
-    <input class="for-input" bindinput="bindUserPhone"  type="number" placeholder="请输入电话"/>
+    <input class="for-input" bindinput="bindUserPhone" value="{{room.userPhone}}" type="number" placeholder="请输入电话"/>
   </view>
   <view class="clear-both user-info">
     <text class="for-label">备注: </text>
-    <input class="for-input" bindinput="bindRemark"  type="text" placeholder="请输入您的要求，我们会尽量安排"/>
+    <input class="for-input" bindinput="bindRemark" value="{{room.roomRemark}}"  type="text" placeholder="请输入您的要求，我们会尽量安排"/>
   </view>
   <view class="clear-both user-info">
     <text class="for-label for-remark">(如有疑问请致电183xxxxxxxx)</text>

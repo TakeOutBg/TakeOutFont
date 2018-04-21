@@ -1,3 +1,6 @@
+<view class="getLocation"
+bindtap="getLocation">点击定位当前位置
+</view>
 <view>
   <view class="input-view input-person">
     <view class="input-label">联系人</view>

@@ -1,4 +1,12 @@
 /* pages/location/location_edit.wxss */
+.getLocation{
+  font-size: 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-bottom: 20rpx solid #F4F4F4;
+  border-top: 20rpx solid #F4F4F4;
+}
 .input-label{
   width: 100px;
   text-align: center;
