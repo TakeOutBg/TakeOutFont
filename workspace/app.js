@@ -71,6 +71,6 @@ App({
     APP_ID: 'wx9aacc28ca08872f0',
     APP_SECRET: 'c99fa948c489fc34ce21e258e455d66a',
     GRANT_TYPE: 'authorization_code',
-    uri: 'http://127.0.0.1:8080/demo-web/'
+    uri: 'http://111.230.48.227:8080/demo-web/'
   }
 })
